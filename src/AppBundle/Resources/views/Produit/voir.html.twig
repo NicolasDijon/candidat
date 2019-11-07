@@ -1,0 +1,42 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Fiche produit
+{% endblock %}
+
+{% block body %}
+
+{# Fiche du produit #}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-7">
+            <h2>{{ produit.nom|upper }}</h2>
+            <h4>Prix du produit: {{ produit.prix }} €</h4> 
+        </div>
+        <div class="col-lg-5">
+            <img src="https://place-hold.it/400x300">
+        </div>
+    </div>
+</div>
+
+{# Liste des commande ou le produit est présent #}
+<h5>Commande(s) ou le produit est présent : </h5>
+
+<table class="table table-striped mt-4"> 
+    <tr>
+        <th>Référence</th>
+        <th>Date de commande</th>
+    </tr>
+    {% for commande in commandes %}
+    <tr class="text-center">
+        <td><a href="{{ url('commande.voir', {'id': commande.id}) }}" title="Voir la commande">{{ commande.reference }}</a></td>
+        <td>{{ commande.date|date('d-m-y') }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td>Aucune commande pour ce produit</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

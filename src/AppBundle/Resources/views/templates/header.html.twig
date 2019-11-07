@@ -1,0 +1,51 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LaNetCie</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/font-awesome.min.css") }}" />
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/bootstrap.css") }}" />
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/jquery-ui.min.css") }}" />
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/style.css") }}" />
+
+</head>
+
+<body>
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="{{ url("homepage") }}"><img class="logo" src="{{ asset("bundles/app/img/logo.png")}}"></a>
+            </div>
+
+
+
+            <div class="col-sm-6 text-right">
+                <ul class="nav">
+
+                        <li><a href="{{ url("client.liste") }}">Clients</a></li>
+                        <li><a href="{{ url("produit.liste") }}">Produits</a></li>
+                        <li><a href="{{ url("commande.liste") }}">Commandes</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="alert-container">
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}">
+                            {{ message | raw }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!--[if lte IE 9]>
+<div class="alert alert-danger">Votre navigateur n'est pas assez récent. Merci de le mettre à jour afin de profiter pleinement de toutes les fonctionnalités.</div>
+<![endif]-->

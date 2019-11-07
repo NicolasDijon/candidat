@@ -1,0 +1,56 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Liste des commandes
+{% endblock %}
+
+{% block body %}
+
+{# Message flash #}
+{% for msg in app.session.flashBag.get('success') %}
+<div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+    {{ msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+<a href="{{ url('commande.ajouter') }}" class="btn btn-success" title="Nouvelle commande">Nouvelle commande</a>
+
+{# Liste des commandes #}
+<table class="table table-striped mt-4"> 
+    <tr>
+        <th>Référence</th>
+        <th>Date de commande</th>
+        <th>Client</th>
+        <th colspan="3" class="text-center">Actions</th>
+    </tr>
+    {% for commande in commandes %}
+    <tr class="text-center">
+        <td>{{ commande.reference }}</td>
+        <td>{{ commande.date|date('d-m-y') }}</td>
+        <td>{{ commande.client }}</td>
+        <td>
+            <a href="{{ url('commande.voir', {'id': commande.id}) }}" class="btn btn-success btn-block" title="Voir">
+                <i class="far fa-eye"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{{ url('commande.modifier', {'id': commande.id}) }}" class="btn btn-warning btn-block" title="Modifier">
+                <i class="fas fa-pen"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{{ url('commande.supprimer', {'id': commande.id}) }}" class="btn btn-danger btn-block"  title="Supprimer">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="navigation">
+    {{ knp_pagination_render(commandes) }}
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Liste des clients
+{% endblock %}
+
+{% block body %}
+
+{# Message flash #}
+{% for msg in app.session.flashBag.get('success') %}
+<div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+    {{ msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+<a href="{{ url('client.ajouter') }}" class="btn btn-success" title="Nouveau client">Nouveau client</a>
+
+{# Liste des clients #}
+<table class="table table-striped mt-4"> 
+    <tr>
+        <th>Nom</th>
+        <th colspan="3" class="text-center">Actions</th>
+    </tr>
+    {% for client in clients %}
+    <tr>
+        <td>{{ client.nom }}</td>
+        <td>
+            <a href="{{ url('client.voir', {'id': client.id}) }}" class="btn btn-success btn-block" title="Voir">
+                <i class="far fa-eye"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{{ url('client.modifier', {'id': client.id}) }}" class="btn btn-warning btn-block" title="Modifier">
+                <i class="fas fa-pen"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{{ url('client.supprimer', {'id': client.id}) }}" class="btn btn-danger btn-block" title="Supprimer">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

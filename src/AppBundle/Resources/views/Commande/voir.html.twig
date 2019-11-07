@@ -1,0 +1,27 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Fiche commande
+{% endblock %}
+
+{% block body %}
+
+{# Fiche d'une commande #}
+<h2>{{ commande.reference|upper }}</h2>
+
+<h5>Produit de la commande</h5>
+
+<table class="table table-striped mt-4"> 
+    <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+    </tr>
+    {% for produit in commande.produits %}
+    <tr>
+        <td>{{ produit.nom }}</td>
+        <td class="text-center">{{ produit.prix }}</td>
+    </tr>
+    {% endfor %} 
+</table>
+
+{% endblock %}

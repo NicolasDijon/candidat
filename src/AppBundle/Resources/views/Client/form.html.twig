@@ -1,0 +1,21 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Ajouter un client
+{% endblock %}
+
+{% block body %}
+
+{# Formulaire d'ajout d'un nouveau client #}
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_row(form.nom) }}
+</div>
+<div class="form-group">
+    <button class="btn btn-success form-control mt-4" title="Ajouter le client">
+        Ajouter le client
+    </button>
+</div>
+{{ form_end(form) }}
+
+{% endblock %}

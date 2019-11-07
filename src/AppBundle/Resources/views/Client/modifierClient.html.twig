@@ -1,0 +1,21 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Modifier le client
+{% endblock %}
+
+{% block body %}
+
+{# Formulaire de modification d'un client #}
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_row(form.nom) }}
+</div>
+<div class="form-group">
+    <button class="btn btn-warning form-control mt-4" title="Modifier">
+        Modifier 
+    </button>
+</div>
+{{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+produit:
+    resource: '@AppBundle/Controller/ProduitController.php'
+    type: annotation
+    prefix: /produits
+
+commande:
+    resource: '@AppBundle/Controller/CommandeController.php'
+    type: annotation
+    prefix: /commandes
+
+client:
+    resource: '@AppBundle/Controller/ClientController.php'
+    type: annotation
+    prefix: /clients
+
+app:
+    resource: '@AppBundle/Controller/DefaultController.php'
+    type: annotation
+

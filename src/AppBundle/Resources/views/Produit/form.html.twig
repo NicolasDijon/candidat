@@ -1,0 +1,24 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Ajouter un produit
+{% endblock %}
+
+{% block body %}
+
+{# Formulaire d'ajout d'un nouveau produit #}
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_row(form.nom) }}
+</div>
+<div class="form-group">
+    {{ form_row(form.prix) }}
+</div>
+<div class="form-group">
+    <button class="btn btn-success form-control mt-4" title="Ajouter le produit">
+        Ajouter le produit
+    </button>
+</div>
+{{ form_end(form) }}
+
+{% endblock %}

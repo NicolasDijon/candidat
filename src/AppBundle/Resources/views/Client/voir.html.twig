@@ -1,0 +1,31 @@
+{% extends "@App/templates/general.html.twig" %}
+
+{% block title %}
+Fiche client
+{% endblock %}
+
+{% block body %}
+
+{# Fiche du client #}
+<h2>{{ client.nom|upper }}</h2>
+
+<h5>Commande(s) du client</h5>
+
+<table class="table table-striped mt-4"> 
+    <tr>
+        <th>Référence</th>
+        <th>Date de commande</th>
+    </tr>
+    {% for commande in commandes %}
+    <tr class="text-center">
+        <td><a href="{{ url('commande.voir', {'id': commande.id}) }}" title="Voir la commande">{{ commande.reference }}</a></td>
+        <td>{{ commande.date|date('d-m-y') }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td>Aucune commande pour ce client</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

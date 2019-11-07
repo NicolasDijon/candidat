@@ -1,0 +1,83 @@
+<html lang="{{ app.request.locale }}">
+
+{% include "@App/templates/header.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="{{ asset("bundles/app/css/style.css") }}" />
+{% endblock %}
+
+<div class="container col-page">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-title">{% block title %}Accueil{% endblock %}</div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-sm-12">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% include "@App/templates/footer.html.twig" %}
+
+{% block javascripts %}
+{# Script checkbox #}
+<script>
+    var expanded = false;
+
+    function showCheckboxes() 
+    {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+</script>
+{% endblock %}
+
+<style>
+    /* Multiselect */
+
+    .multiselect {
+        width: auto;
+    }
+
+    .selectBox {
+        position: relative;
+    }
+
+    .selectBox select {
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    #checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+    #checkboxes label {
+        display: block;
+    }
+
+    #checkboxes label:hover {
+        background-color: #1e90ff;
+    }
+</style>
+
+</body>
+
+</html>
